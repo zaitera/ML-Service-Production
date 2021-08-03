@@ -1,0 +1,220 @@
+openapi: 3.0.0
+
+info:
+  title: Machine Learning Service Structure
+  contact:
+    name: Abdullah Zaiter
+    email: abdu.zaiter@gmail.com
+  version: 1.0.0
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    basicAuth:
+      type: http
+      scheme: basic
+
+paths:
+  /resource/init:
+    get:
+      tags:
+        - Init & Predict
+      security:
+        - bearerAuth: [ ]
+      description: ""
+      summary: Init and Train
+      operationId: Init and Train
+      parameters:
+        - in: query
+          name: async
+          schema:
+            type: boolean
+          description: If you want to init and train the service asynchronously
+      responses:
+        '202':
+          description: 'Init was requested and the task was submitted, to check the task status use the operation TaskStatus'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL to check the task status
+        '204':
+          description: 'Init and train ran successfully'
+        '401':
+          description: 'Bearer auth token error'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                example:
+                  status: Invalid or expired token
+        '500':
+          description: 'Error initializing the service'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                example:
+                  status: "Error: database is offline"
+      deprecated: false
+
+  /resource/auth:
+    get:
+      tags:
+        - Authentication
+      security:
+        - basicAuth: [ ]
+      description: "In the Basic Auth email should be valid and from **gmail.com** domain"
+      summary: GenerateToken
+      operationId: GenerateToken
+      parameters: [ ]
+      responses:
+        '200':
+          description: 'Token generated successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                example:
+                  token: "c0eb7903452d4bd6b76793209255ef2c"
+        '401':
+          description: 'Basic auth validation error'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                example:
+                  status: Bad username or password
+      deprecated: false
+
+  /resource/predict:
+    post:
+      tags:
+        - Init & Predict
+      security:
+        - bearerAuth: [ ]
+      description: ""
+      summary: Predict or Estimate
+      operationId: Predict or Estimate
+      parameters: [ ]
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                mocked_json: "mocked_value"
+        required: true
+      responses:
+        '200':
+          description: 'Prediction ran successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  current_random:
+                    type: integer
+                  current_post_json:
+                    type: object
+                  last_post_json:
+                    type: object
+                  last_random:
+                    type: integer
+                example:
+                  current_random: 42
+                  current_post_json:
+                    mocked_json: "mocked_value"
+                  last_post_json:
+                    mocked_last_json: "mocked_last_value"
+                  last_random: 24
+        '401':
+          description: 'Bearer auth token error'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                example:
+                  status: Invalid or expired token
+        '424':
+          description: 'Init has not been called or ran with errors'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                example:
+                  status: "Did you call init the service"
+        '500':
+          description: "Generic error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                example:
+                  status: "Error: prediction failed"
+      deprecated: false
+
+  /resource/task/status/{task_id}:
+    get:
+      tags:
+        - Task Status
+      security:
+        - bearerAuth: [ ]
+      description: "Check the status of a given task"
+      summary: "Check task status"
+      operationId: TaskStatus
+      parameters:
+        - in: path
+          required: true
+          name: task_id
+          schema:
+            type: string
+          description: "The task id received when you called init with async option"
+      responses:
+        '200':
+          description: 'Bearer auth token error'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  done:
+                    type: boolean
+                  status:
+                    type: string
+                example:
+                  done: false
+                  status: "In progress..."
+      deprecated: false
+tags:
+  - name: Authentication
+    description: Basic Auth call to obtain Bearer Token
+  - name: Init & Predict
+    description: Machine Learning service usage
+  - name: Task Status
+    description: In case of Async usage

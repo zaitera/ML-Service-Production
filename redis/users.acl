@@ -1,0 +1,2 @@
+user TEMPLATE_MASTER_NAME on +@all ~* >TEMPLATE_MASTER_PW
+user default on +@all ~* >TEMPLATE_CELERY_PW

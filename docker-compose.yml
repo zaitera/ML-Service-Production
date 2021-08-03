@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  redis:
+    build:
+      context: ./redis
+      dockerfile: Dockerfile
+    volumes:
+      - redis_data:/data
+    networks:
+      - net
+    expose:
+      - "6379"
+    restart: on-failure
+
+  flask:
+    build:
+      context: src
+      dockerfile: Dockerfile
+    env_file:
+      - ./redis/config.properties
+    networks:
+      - net
+    depends_on:
+      - redis
+    expose:
+      - "5000"
+    restart: on-failure
+
+  nginx:
+    restart: on-failure
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    networks:
+      - net
+    expose:
+      - "8080"
+    ports:
+      - "8880:8080"
+
+volumes:
+  redis_data:
+    driver: local
+
+networks:
+  net:

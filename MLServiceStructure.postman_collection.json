@@ -1,0 +1,596 @@
+{
+	"info": {
+		"_postman_id": "81f9aae2-b4e5-44fe-afc3-f469a47065d2",
+		"name": "Machine Learning Service Structure",
+		"description": "Contact Support:\n Name: Abdullah Zaiter\n Email: abdu.zaiter@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "resource",
+			"item": [
+				{
+					"name": "Init and Train",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/resource/init?async=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"resource",
+								"init"
+							],
+							"query": [
+								{
+									"key": "async",
+									"value": "true",
+									"description": "If you want to init and train the service asynchronously"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Init was requested and the task was submitted, to check the task status use the operation TaskStatus",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/resource/init?async=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"init"
+									],
+									"query": [
+										{
+											"key": "async",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Location",
+									"value": "minim Ut amet velit",
+									"description": "URL to check the task status"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Init and train ran successfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/resource/init?async=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"init"
+									],
+									"query": [
+										{
+											"key": "async",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bearer auth token error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/resource/init?async=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"init"
+									],
+									"query": [
+										{
+											"key": "async",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"status\": \"Invalid or expired token\"\n}"
+						},
+						{
+							"name": "Error initializing the service",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/resource/init?async=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"init"
+									],
+									"query": [
+										{
+											"key": "async",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"status\": \"Error: database is offline\"\n}"
+						}
+					]
+				},
+				{
+					"name": "GenerateToken",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "<Basic Auth Username>",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "<Basic Auth Password>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/resource/auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"resource",
+								"auth"
+							]
+						},
+						"description": "In the Basic Auth email should be valid and from **gmail.com** domain"
+					},
+					"response": [
+						{
+							"name": "Token generated successfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: basic",
+										"key": "Authorization",
+										"value": "Basic <credentials>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/resource/auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"auth"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"token\": \"c0eb7903452d4bd6b76793209255ef2c\"\n}"
+						},
+						{
+							"name": "Basic auth validation error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: basic",
+										"key": "Authorization",
+										"value": "Basic <credentials>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/resource/auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"auth"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"status\": \"Bad username or password\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Predict or Estimate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mocked_json\": \"mocked_value\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/resource/predict",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"resource",
+								"predict"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Prediction ran successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mocked_json\": \"mocked_value\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/resource/predict",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"predict"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"current_random\": 42,\n \"current_post_json\": {\n  \"mocked_json\": \"mocked_value\"\n },\n \"last_post_json\": {\n  \"mocked_last_json\": \"mocked_last_value\"\n },\n \"last_random\": 24\n}"
+						},
+						{
+							"name": "Bearer auth token error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mocked_json\": \"mocked_value\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/resource/predict",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"predict"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"status\": \"Invalid or expired token\"\n}"
+						},
+						{
+							"name": "Init has not been called or ran with errors",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mocked_json\": \"mocked_value\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/resource/predict",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"predict"
+									]
+								}
+							},
+							"status": "Failed Dependency (WebDAV) (RFC 4918)",
+							"code": 424,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"status\": \"Did you call init the service\"\n}"
+						},
+						{
+							"name": "Generic error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mocked_json\": \"mocked_value\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/resource/predict",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"predict"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"status\": \"Error: prediction failed\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Check task status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/resource/task/status/:task_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"resource",
+								"task",
+								"status",
+								":task_id"
+							],
+							"variable": [
+								{
+									"key": "task_id",
+									"value": "{{task_token}}",
+									"description": "(Required) The task id received when you called init with async option"
+								}
+							]
+						},
+						"description": "Check the status of a given task"
+					},
+					"response": [
+						{
+							"name": "Bearer auth token error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/resource/task/status/:task_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resource",
+										"task",
+										"status",
+										":task_id"
+									],
+									"variable": [
+										{
+											"key": "task_id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"done\": false,\n \"status\": \"In progress...\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}
