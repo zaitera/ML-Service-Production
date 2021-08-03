@@ -8,15 +8,16 @@
 ##### ● [Celery](https://docs.celeryproject.org/en/stable/getting-started/introduction.html) to support asynchronous time-consuming requests as training and initializing the ML model.   
 
 ## Important Info
- ● This project is made to help you scale from a basic Machine Learning project for research purposes to a production grade Machine Learning web service.  
- ● It is general purpose project, so it assumes that your service needs initialization, training, saving models to the databases for further usage in estimation.  
- ● It's based on Docker, so it could be scalable and OS-agnostic.  
+ ● Made to help you scale from a basic Machine Learning project for research purposes to a production grade Machine Learning web service.  
+ ● General purpose project, so it assumes that your service needs initialization, training, saving models to the databases for further usage in estimation.  
+ ● Based on Docker, so it could be scalable and OS-agnostic.  
 
 <p align="center">
     <img style='width: 500px' src="readme_structure.png"/>
 </p>
 
 #### For the detailed API, use the file  ***ml-service.yml***  on any swagger editor, and you will see the API definition.  
+
 #### You can find a postman collection of this service in the file  ***MLServiceStructure.postman_collection.json***, use it to validate your deployment. 
 
 
