@@ -12,9 +12,9 @@
  ● It is general purpose project, so it assumes that your service needs initialization, training, saving models to the databases for further usage in estimation.  
  ● It's based on Docker, so it could be scalable and OS-agnostic.  
 
-<div style='float: center'>
+<p style="text-align:center;">
     <img style='width: 600px' src="readme_structure.png"/>
-</div>
+</p>
 
 For the detailed API, use the file  ***ml-service.yml***  on any swagger editor, and you will see the API definition.
 
