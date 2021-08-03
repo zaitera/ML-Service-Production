@@ -16,7 +16,9 @@
     <img style='width: 500px' src="readme_structure.png"/>
 </p>
 
-For the detailed API, use the file  ***ml-service.yml***  on any swagger editor, and you will see the API definition.
+#### For the detailed API, use the file  ***ml-service.yml***  on any swagger editor, and you will see the API definition.  
+#### You can find a postman collection of this service in the file  ***MLServiceStructure.postman_collection.json***, use it to validate your deployment. 
+
 
 Don't forget to create the file ***./src/config.properties*** , use the following template to add the fingerprint database's information and the auth-related information:  
 NOTE: expiry_time_unit **MUST** BE ONE OF THE FOLLOWING:  
