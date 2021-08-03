@@ -4,7 +4,7 @@
 ##### ● [Flask](https://flask.palletsprojects.com/en/2.0.x/) as the web framework.
 ##### ● [Redis](https://redis.io/) for a fast loading of the trained model and other data between the workers.
 ##### ● [NGINX](https://www.nginx.com/) as a web server and reverse proxy.
-##### ● [Guincorn](https://gunicorn.org/) automatically creates parallel workers/threads according to the capacity of the machine it is running on.  
+##### ● [Gunicorn](https://gunicorn.org/) automatically creates parallel workers/threads according to the capacity of the machine it is running on.  
 ##### ● [Celery](https://docs.celeryproject.org/en/stable/getting-started/introduction.html) to support asynchronous time-consuming requests as training and initializing the ML model.   
 
 ## Important Info
