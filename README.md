@@ -20,7 +20,7 @@
 #### You can find a postman collection of this service in the file  ***MLServiceStructure.postman_collection.json***, use it to validate your deployment. 
 
 
-Don't forget to create the file ***./src/config.properties*** , use the following template to add the fingerprint database's information and the auth-related information:  
+Don't forget to create the file ***./src/config.properties*** , use the following template to add the auth-related configuration:  
 NOTE: expiry_time_unit **MUST** BE ONE OF THE FOLLOWING:  
 (days | seconds | microseconds | milliseconds | minutes | hours | weeks)
 ```./src/config.properties
