@@ -1,6 +1,6 @@
 FROM redis:alpine
 
-LABEL MAINTAINER="Abdullah Zaiter <a.zaiter@penguinin.com>"
+LABEL MAINTAINER="Abdullah Zaiter <abdu.zaiter@gmail.com>"
 
 WORKDIR /usr/local/etc/redis/
 

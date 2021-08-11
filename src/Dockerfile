@@ -1,6 +1,6 @@
 FROM python:3.9-slim-buster
 
-LABEL MAINTAINER="Abdullah Zaiter <a.zaiter@penguinin.com>"
+LABEL MAINTAINER="Abdullah Zaiter <abdu.zaiter@gmail.com>"
 
 ENV GROUP_ID=1000 \
     USER_ID=1000
